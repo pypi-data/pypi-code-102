@@ -1,0 +1,1 @@
+from .term_and_condition import TermAndCondition

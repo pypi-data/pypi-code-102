@@ -1,0 +1,1 @@
+from .crud_term_and_condition import term_and_condition
