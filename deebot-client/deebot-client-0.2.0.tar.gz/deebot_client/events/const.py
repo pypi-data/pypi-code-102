@@ -1,0 +1,71 @@
+"""Event constants."""
+from typing import List, Mapping, Type
+
+from ..command import Command
+from ..commands import (
+    GetAdvancedMode,
+    GetBattery,
+    GetCachedMapInfo,
+    GetCarpetAutoFanBoost,
+    GetChargeState,
+    GetCleanInfo,
+    GetCleanLogs,
+    GetContinuousCleaning,
+    GetError,
+    GetFanSpeed,
+    GetLifeSpan,
+    GetMajorMap,
+    GetMapTrace,
+    GetPos,
+    GetStats,
+    GetTotalStats,
+    GetVolume,
+    GetWaterInfo,
+)
+from . import (
+    AdvancedModeEvent,
+    BatteryEvent,
+    CarpetAutoFanBoostEvent,
+    CleanLogEvent,
+    ContinuousCleaningEvent,
+    CustomCommandEvent,
+    ErrorEvent,
+    Event,
+    FanSpeedEvent,
+    LifeSpanEvent,
+    PositionsEvent,
+    ReportStatsEvent,
+    RoomEvent,
+    RoomsEvent,
+    StatsEvent,
+    StatusEvent,
+    TotalStatsEvent,
+    VolumeEvent,
+    WaterInfoEvent,
+)
+from .map import MajorMapEvent, MapSetEvent, MapTraceEvent, MinorMapEvent
+
+EVENT_DTO_REFRESH_COMMANDS: Mapping[Type[Event], List[Command]] = {
+    AdvancedModeEvent: [GetAdvancedMode()],
+    BatteryEvent: [GetBattery()],
+    CarpetAutoFanBoostEvent: [GetCarpetAutoFanBoost()],
+    CleanLogEvent: [GetCleanLogs()],
+    ContinuousCleaningEvent: [GetContinuousCleaning()],
+    CustomCommandEvent: [],
+    ErrorEvent: [GetError()],
+    FanSpeedEvent: [GetFanSpeed()],
+    LifeSpanEvent: [GetLifeSpan()],
+    MajorMapEvent: [GetMajorMap()],
+    MapSetEvent: [],
+    MapTraceEvent: [GetMapTrace()],
+    MinorMapEvent: [],
+    PositionsEvent: [GetPos()],
+    ReportStatsEvent: [],  # ReportStats cannot be pulled
+    RoomEvent: [],
+    RoomsEvent: [GetCachedMapInfo()],
+    StatsEvent: [GetStats()],
+    StatusEvent: [GetChargeState(), GetCleanInfo()],
+    TotalStatsEvent: [GetTotalStats()],
+    VolumeEvent: [GetVolume()],
+    WaterInfoEvent: [GetWaterInfo()],
+}
